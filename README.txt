@@ -8,14 +8,14 @@ export https_proxy="http://127.0.0.1:7890"
 
 unset http_proxy
 unset https_proxy
-
+curl https://www.youtube.com
 
 
 lsof -i :7890
 kill -9 <PID>
 
 
-curl google.com
+#curl google.com
 
 
 # host
