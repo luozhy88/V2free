@@ -16,3 +16,7 @@ kill -9 <PID>
 
 
 curl google.com
+
+
+# host
+ /etc/hosts
