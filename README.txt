@@ -20,3 +20,6 @@ curl google.com
 
 # host
  /etc/hosts
+https://site.ip138.com/github.com/
+
+/etc/init.d/networking restart
