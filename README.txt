@@ -5,10 +5,11 @@ wget -U "Mozilla/6.0" -O ~/.config/clash/config.yaml  你的Clash订阅链接网
 ## 终端运行
 export http_proxy="http://127.0.0.1:7890"
 export https_proxy="http://127.0.0.1:7890"
+curl https://www.youtube.com
 
 unset http_proxy
 unset https_proxy
-curl https://www.youtube.com
+
 
 
 lsof -i :7890
