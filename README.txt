@@ -6,8 +6,8 @@ wget -U "Mozilla/6.0" -O ~/.config/clash/config.yaml  你的Clash订阅链接网
 export http_proxy="http://127.0.0.1:7890"
 export https_proxy="http://127.0.0.1:7890"
 curl https://www.youtube.com
+curl https://github.com
 
-unset http_proxy
 unset https_proxy
 
 
