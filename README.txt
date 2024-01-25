@@ -21,6 +21,7 @@ kill -9 <PID>
 
 # host
  /etc/hosts
-https://site.ip138.com/github.com/
+https://site.ip138.com/github.com/ #更好用
+140.82.112.3 github.com
 
 /etc/init.d/networking restart
