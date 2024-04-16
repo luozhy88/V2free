@@ -25,3 +25,8 @@ https://site.ip138.com/github.com/ #更好用
 140.82.112.3 github.com
 
 /etc/init.d/networking restart
+
+# 网速测定
+sudo apt install speedtest-cli  # Debian/Ubuntu
+sudo yum install speedtest-cli  # CentOS/RHEL
+speedtest-cli
