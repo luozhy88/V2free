@@ -9,7 +9,8 @@ curl https://www.youtube.com
 curl https://github.com
 
 unset https_proxy
-
+## linux 终端更改节点方法
+/home/zhiyu/.config/mihomo/config.yaml #替换掉
 
 
 lsof -i :7890
