@@ -24,6 +24,7 @@ kill -9 <PID>
  /etc/hosts
 https://site.ip138.com/github.com/ #更好用
 140.82.112.3 github.com
+188.184.98.238 zenodo.org
 
 centos:sudo systemctl restart NetworkManager
 /etc/init.d/networking restart
