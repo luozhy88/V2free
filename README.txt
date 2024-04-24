@@ -25,6 +25,7 @@ kill -9 <PID>
 https://site.ip138.com/github.com/ #更好用
 140.82.112.3 github.com
 
+centos:sudo systemctl restart NetworkManager
 /etc/init.d/networking restart
 
 # 网速测定
