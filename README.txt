@@ -20,7 +20,7 @@ kill -9 <PID>
 #curl google.com
 
 
-# host
+# host 如果后面IP能ping通也可以，后面域名不通无所谓
  /etc/hosts
 https://site.ip138.com/github.com/ #更好用
 140.82.112.3 github.com
