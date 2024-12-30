@@ -25,11 +25,20 @@ kill -9 <PID>
 https://site.ip138.com/github.com/ #更好用
 140.82.112.3 github.com
 188.184.98.238 zenodo.org
+13.35.41.90 huggingface.co
+13.35.41.90 cdn-lfs.huggingface.co
+
 
 centos:sudo systemctl restart NetworkManager
 /etc/init.d/networking restart
+
+export HF_ENDPOINT=https://hf-mirror.com
+git clone https://hf-mirror.com/ds4sd/docling-models
+
 
 # 网速测定
 sudo apt install speedtest-cli  # Debian/Ubuntu
 sudo yum install speedtest-cli  # CentOS/RHEL
 speedtest-cli
+
+
