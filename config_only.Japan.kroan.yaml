@@ -1,0 +1,182 @@
+mixed-port: 7890
+allow-lan: false
+mode: rule
+unified-delay: true
+tcp-concurrent: true
+geodata-mode: true
+geox-url:
+  geoip: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat"
+  geosite: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat"
+  mmdb: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country.mmdb"
+log-level: info
+dns:
+  enable: false
+  ipv6: false
+  default-nameserver: [223.5.5.5, 119.29.29.29]
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  use-hosts: true
+  nameserver: ['114.114.114.114', '223.5.5.5', 'https://dns.alidns.com/dns-query']
+proxies:
+  # 添加 DIRECT 代理，用于“不用代理”选项
+  - { name: 🎯 不用代理, type: direct }
+  - { name: 无限流量【不保证可用】日本-付费, server: jp0731.aihost.top, port: 443, type: vmess, uuid: a06fe9b7-c4eb-39cc-9f25-f9fe05677335, alterId: 0, cipher: auto, udp: true, tls: true, network: ws, ws-opts: { path: /macos, headers: { Host: jp0731.aihost.top }, v2ray-http-upgrade: true } }
+  - { name: 日本1a-付费节点, server: jpas.showmyip.top, port: 11708, type: vmess, uuid: a06fe9b7-c4eb-39cc-9f25-f9fe05677335, alterId: 0, cipher: auto, udp: true, tls: false, network: ws, ws-opts: { path: /jp-speedtest, headers: { Host: jpas.showmyip.top } } }
+  - { name: 日本1c-付费节点, server: jpc.showmyip.top, port: 11708, type: vmess, uuid: a06fe9b7-c4eb-39cc-9f25-f9fe05677335, alterId: 0, cipher: auto, udp: true, tls: false, network: ws, ws-opts: { path: /jp-speedtest, headers: { Host: jpc.showmyip.top } } }
+  - { name: 日本2a-付费节点, server: jpas.showmyip.top, port: 11343, type: vmess, uuid: a06fe9b7-c4eb-39cc-9f25-f9fe05677335, alterId: 0, cipher: auto, udp: true, tls: false }
+  - { name: 日本2c-付费节点, server: jpc.showmyip.top, port: 11343, type: vmess, uuid: a06fe9b7-c4eb-39cc-9f25-f9fe05677335, alterId: 0, cipher: auto, udp: true, tls: false }
+  - { name: 日本3b-付费节点, server: jpbm.showmyip.top, port: 11821, type: vmess, uuid: a06fe9b7-c4eb-39cc-9f25-f9fe05677335, alterId: 0, cipher: auto, udp: true, tls: false }
+  - { name: 日本3c-付费节点, server: jpc.showmyip.top, port: 11821, type: vmess, uuid: a06fe9b7-c4eb-39cc-9f25-f9fe05677335, alterId: 0, cipher: auto, udp: true, tls: false }
+  - { name: 日本4b-付费节点, server: jpbm.showmyip.top, port: 11701, type: vmess, uuid: a06fe9b7-c4eb-39cc-9f25-f9fe05677335, alterId: 0, cipher: auto, udp: true, tls: false }
+  - { name: 日本4c-付费节点, server: jpc.showmyip.top, port: 11701, type: vmess, uuid: a06fe9b7-c4eb-39cc-9f25-f9fe056773335, alterId: 0, cipher: auto, udp: true, tls: false }
+  - { name: 日本5a-付费节点, server: jpas.showmyip.top, port: 11702, type: vmess, uuid: a06fe9b7-c4eb-39cc-9f25-f9fe05677335, alterId: 0, cipher: auto, udp: true, tls: false }
+  - { name: 日本5b-付费节点, server: jpbm.showmyip.top, port: 11702, type: vmess, uuid: a06fe9b7-c4eb-39cc-9f25-f9fe05677335, alterId: 0, cipher: auto, udp: true, tls: false }
+  - { name: 日本6a-付费节点, server: jpas.showmyip.top, port: 11703, type: vmess, uuid: a06fe9b7-c4eb-39cc-9f25-f9fe05677335, alterId: 0, cipher: auto, udp: true, tls: false }
+  - { name: 日本6b-付费节点, server: jpbm.showmyip.top, port: 11703, type: vmess, uuid: a06fe9b7-c4eb-39cc-9f25-f9fe05677335, alterId: 0, cipher: auto, udp: true, tls: false }
+  - { name: 韩国a-付费节点, server: kr1a.showmyip.top, port: 11700, type: vmess, uuid: a06fe9b7-c4eb-39cc-9f25-f9fe05677335, alterId: 0, cipher: auto, udp: true, tls: false }
+  - { name: 韩国b-付费节点, server: kr1b.showmyip.top, port: 11700, type: vmess, uuid: a06fe9b7-c4eb-39cc-9f25-f9fe05677335, alterId: 0, cipher: auto, udp: true, tls: false }
+  - { name: 5倍率|游戏|日本1-付费节点, server: gamejp.showmyip.top, port: '11853', type: ss, cipher: aes-256-gcm, password: KsQnMI, udp: true }
+  - { name: 5倍率|游戏|韩国-付费节点, server: gamekr.showmyip.top, port: '11347', type: ss, cipher: aes-256-gcm, password: KsQnMI, udp: true }
+
+proxy-groups:
+  - name: 🔰 节点选择
+    type: select
+    proxies:
+      - ♻️ 自动选择
+      - 🎯 不用代理 # 引用已定义的 DIRECT 代理
+      - 无限流量【不保证可用】日本-付费
+      - 日本1a-付费节点
+      - 日本1c-付费节点
+      - 日本2a-付费节点
+      - 日本2c-付费节点
+      - 日本3b-付费节点
+      - 日本3c-付费节点
+      - 日本4b-付费节点
+      - 日本4c-付费节点
+      - 日本5a-付费节点
+      - 日本5b-付费节点
+      - 日本6a-付费节点
+      - 日本6b-付费节点
+      - 韩国a-付费节点
+      - 韩国b-付费节点
+      - 5倍率|游戏|日本1-付费节点
+      - 5倍率|游戏|韩国-付费节点
+
+  - name: ♻️ 自动选择
+    type: url-test
+    url: http://cp.cloudflare.com
+    interval: 86400
+    proxies:
+      - 无限流量【不保证可用】日本-付费
+      - 日本1a-付费节点
+      - 日本1c-付费节点
+      - 日本2a-付费节点
+      - 日本2c-付费节点
+      - 日本3b-付费节点
+      - 日本3c-付费节点
+      - 日本4b-付费节点
+      - 日本4c-付费节点
+      - 日本5a-付费节点
+      - 日本5b-付费节点
+      - 日本6a-付费节点
+      - 日本6b-付费节点
+      - 韩国a-付费节点
+      - 韩国b-付费节点
+      - 5倍率|游戏|日本1-付费节点
+      - 5倍率|游戏|韩国-付费节点
+
+  - name: 🌍 国外媒体
+    type: select
+    proxies:
+      - 🔰 节点选择
+      - ♻️ 自动选择
+      - 🎯 不用代理 # 引用已定义的 DIRECT 代理
+      - 无限流量【不保证可用】日本-付费
+      - 日本1a-付费节点
+      - 日本1c-付费节点
+      - 日本2a-付费节点
+      - 日本2c-付费节点
+      - 日本3b-付费节点
+      - 日本3c-付费节点
+      - 日本4b-付费节点
+      - 日本4c-付费节点
+      - 日本5a-付费节点
+      - 日本5b-付费节点
+      - 日本6a-付费节点
+      - 日本6b-付费节点
+      - 韩国a-付费节点
+      - 韩国b-付费节点
+      - 5倍率|游戏|日本1-付费节点
+      - 5倍率|游戏|韩国-付费节点
+
+  - name: 🧱 国内媒体
+    type: select
+    proxies:
+      - 🎯 不用代理 # 引用已定义的 DIRECT 代理
+      - 🔰 节点选择
+      - 无限流量【不保证可用】日本-付费
+      - 日本1a-付费节点
+      - 日本1c-付费节点
+      - 日本2a-付费节点
+      - 日本2c-付费节点
+      - 日本3b-付费节点
+      - 日本3c-付费节点
+      - 日本4b-付费节点
+      - 日本4c-付费节点
+      - 日本5a-付费节点
+      - 日本5b-付费节点
+      - 日本6a-付费节点
+      - 日本6b-付费节点
+      - 韩国a-付费节点
+      - 韩国b-付费节点
+      - 5倍率|游戏|日本1-付费节点
+      - 5倍率|游戏|韩国-付费节点
+
+  - name: Ⓜ️ 微软服务
+    type: select
+    proxies:
+      - 🎯 不用代理 # 引用已定义的 DIRECT 代理
+      - 🔰 节点选择
+      - 无限流量【不保证可用】日本-付费
+      - 日本1a-付费节点
+      - 日本1c-付费节点
+      - 日本2a-付费节点
+      - 日本2c-付费节点
+      - 日本3b-付费节点
+      - 日本3c-付费节点
+      - 日本4b-付费节点
+      - 日本4c-付费节点
+      - 日本5a-付费节点
+      - 日本5b-付费节点
+      - 日本6a-付费节点
+      - 日本6b-付费节点
+      - 韩国a-付费节点
+      - 韩国b-付费节点
+      - 5倍率|游戏|日本1-付费节点
+      - 5倍率|游戏|韩国-付费节点
+
+rules:
+  # 本地网络直连，避免代理内部流量
+  - IP-CIDR,127.0.0.1/8,DIRECT
+  - IP-CIDR,10.0.0.0/8,DIRECT
+  - IP-CIDR,172.16.0.0/12,DIRECT
+  - IP-CIDR,192.168.0.0/16,DIRECT
+
+  # GeoIP CN 直连 (如果geodata-mode: true，此规则将根据IP地址判断为中国大陆IP直连)
+  # 需要确保 geox-url 中的 geoip.dat 和 geosite.dat 可以正常下载
+  - GEOIP,CN,DIRECT,no-resolve
+
+  # 常见的国外媒体和服务通过代理
+  - DOMAIN-SUFFIX,googleapis.com,🌍 国外媒体
+  - DOMAIN-SUFFIX,youtube.com,🌍 国外媒体
+  - DOMAIN-SUFFIX,youtu.be,🌍 国外媒体
+  - DOMAIN-SUFFIX,npmjs.org,🌍 国外媒体 # 处理 npmjs.org 的流量
+  - DOMAIN-SUFFIX,google.com,🌍 国外媒体
+  - DOMAIN-SUFFIX,google.com.hk,🌍 国外媒体
+  - DOMAIN-SUFFIX,gmail.com,🌍 国外媒体
+  - DOMAIN-SUFFIX,twitter.com,🌍 国外媒体
+  - DOMAIN-SUFFIX,facebook.com,🌍 国外媒体
+  - DOMAIN-SUFFIX,instagram.com,🌍 国外媒体
+
+  # 最终规则，所有未匹配的流量都通过节点选择
+  - MATCH,🔰 节点选择
