@@ -16,6 +16,10 @@ unset https_proxy
 lsof -i :7890
 kill -9 <PID>
 
+external-controller: 0.0.0.0:9090 # 如果你不是从本机访问，需要从其它机器访问这个Clash Dashboard ,则改为：0.0.0.0:9090
+external-ui: /etc/clash/clash-dashboard # clash-dashboard的路径；
+secret: 'luozhiyu' # PaaRwW3B1Kj9 是登录web管理界面的密码，请自行设置你自己的,不要照抄教程中的密码；
+
 
 #curl google.com
 
